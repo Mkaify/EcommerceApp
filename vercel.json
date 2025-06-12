@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "env": {
+    "NEXTAUTH_SECRET": "your-secret-key-here",
+    "NEXTAUTH_URL": "https://your-app-name.vercel.app"
+  }
+} 
