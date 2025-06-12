@@ -3,8 +3,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  console.log('🌱 Starting to seed the database...')
-
   // Create categories
   const categories = await Promise.all([
     prisma.category.create({
@@ -93,18 +91,7 @@ async function main() {
     }),
   ])
 
-  // Create a sample user
-  await prisma.user.upsert({
-    where: { email: 'demo@example.com' },
-    update: {},
-    create: {
-      email: 'demo@example.com',
-      name: 'Demo User',
-      password: 'demo123', // In a real app, this should be hashed
-    },
-  })
-
-  console.log('✅ Database seeded successfully!')
+  console.log('Database has been seeded. 🌱')
 }
 
 main()

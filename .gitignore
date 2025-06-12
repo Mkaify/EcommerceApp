@@ -172,3 +172,4 @@ pnpm-lock.yaml
 # Project specific
 V3/
 .vercel
+.env*.local
