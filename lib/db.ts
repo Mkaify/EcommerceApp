@@ -6,6 +6,11 @@ import { PrismaClient } from "@prisma/client"
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 
+// Log database connection info
+console.log('🔗 Database URL:', process.env.DATABASE_URL ? 'Set' : 'Not set')
+console.log('🔗 Postgres Prisma URL:', process.env.POSTGRES_PRISMA_URL ? 'Set' : 'Not set')
+console.log('🔗 Environment:', process.env.NODE_ENV)
+
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
