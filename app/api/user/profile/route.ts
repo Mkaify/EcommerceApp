@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
-import { authOptions, updateUser, getUserByEmail, createOrGetUser } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/auth"
+import { updateUser, getUserByEmail, createOrGetUser } from "@/lib/auth-utils"
 
 // Update user profile
 export async function PUT(request: Request) {
@@ -36,7 +37,7 @@ export async function PUT(request: Request) {
     }
 
     // Update the user in the NextAuth user store
-    const updatedUser = updateUser(session.user.email, { name, email })
+    const updatedUser = updateUser(session.user.email, { name })
 
     if (!updatedUser) {
       return NextResponse.json({ error: "Failed to update user after creation" }, { status: 500 })

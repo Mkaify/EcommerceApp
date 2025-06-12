@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth/next"
 import { redirect } from "next/navigation"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/auth"
 import AccountDashboard from "@/components/account/account-dashboard"
 
 export const metadata = {
@@ -15,5 +15,14 @@ export default async function AccountPage() {
     redirect("/auth/login?callbackUrl=/account")
   }
 
-  return <AccountDashboard user={session.user} />
+  // Ensure user has all required fields
+  const user = {
+    ...session.user,
+    name: session.user.name || "User",
+    email: session.user.email || "",
+    id: session.user.id || "",
+    role: session.user.role || "user"
+  }
+
+  return <AccountDashboard user={user} />
 }

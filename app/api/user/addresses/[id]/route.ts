@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/db"
 
 // Update an address
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions)
 
@@ -13,7 +13,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 
     const addressData = await request.json()
-    const { id } = params
+    const { id } = await params
 
     // Get user by email
     const user = await prisma.user.findUnique({
@@ -53,7 +53,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 }
 
 // Delete an address
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions)
 
@@ -61,7 +61,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const { id } = params
+    const { id } = await params
 
     // Get user by email
     const user = await prisma.user.findUnique({

@@ -145,10 +145,10 @@ export default function CookiePolicyPage() {
                   You can control and manage cookies through your browser settings. Here's how to manage cookies in popular browsers:
                 </p>
                 <ul className="list-disc list-inside text-gray-700 mb-4 ml-4">
-                  <li><strong>Chrome:</strong> Settings &gt; Privacy and security &gt; Cookies and other site data</li>
-                  <li><strong>Firefox:</strong> Options &gt; Privacy & Security &gt; Cookies and Site Data</li>
-                  <li><strong>Safari:</strong> Preferences &gt; Privacy &gt; Manage Website Data</li>
-                  <li><strong>Edge:</strong> Settings &gt; Site permissions &gt; Cookies and site data</li>
+                  <li><strong>Chrome:</strong> Settings → Privacy and security → Cookies and other site data</li>
+                  <li><strong>Firefox:</strong> Options → Privacy & Security → Cookies and Site Data</li>
+                  <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+                  <li><strong>Edge:</strong> Settings → Site permissions → Cookies and site data</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">5.2 Cookie Consent Management</h3>

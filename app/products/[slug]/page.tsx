@@ -3,9 +3,9 @@ import { prisma } from "@/lib/db"
 import ProductDetails from "@/components/product/product-details"
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 async function getProduct(slug: string) {

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
-import { authOptions, validateUserPassword, updateUserPassword } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/auth"
+import { validateUserPassword, updateUserPassword } from "@/lib/auth-utils"
 
 // Update user password
 export async function PUT(request: Request) {

@@ -3,8 +3,9 @@
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { Suspense } from "react"
 
-export default function AuthErrorPage() {
+function AuthErrorContent() {
   const searchParams = useSearchParams()
   const error = searchParams.get("error")
 
@@ -68,4 +69,16 @@ export default function AuthErrorPage() {
       </div>
     </div>
   )
-} 
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <AuthErrorContent />
+    </Suspense>
+  )
+}
