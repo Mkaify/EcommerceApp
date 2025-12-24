@@ -107,7 +107,7 @@ dev.db*
 database.db*
 
 # Prisma
-prisma/migrations/
+# Allow migrations for others to apply: prisma/migrations/
 !prisma/migrations/.keep
 
 # IDE
